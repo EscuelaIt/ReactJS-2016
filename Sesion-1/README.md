@@ -23,3 +23,4 @@
 - http://standardjs.com/
 - https://atomlinter.github.io/
 - http://www.sublimelinter.com/
+- https://www.npmjs.com/package/rimraf
