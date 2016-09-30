@@ -19,8 +19,13 @@
 - http://exploringjs.com/es6/
 - https://babeljs.io/
 - https://www.npmjs.com/package/npm-run-all
-- http://www.desarrolloweb.com/articulos/conociendo-variables-ecmascript.html
 - http://standardjs.com/
 - https://atomlinter.github.io/
 - http://www.sublimelinter.com/
 - https://www.npmjs.com/package/rimraf
+- http://www.desarrolloweb.com/articulos/conociendo-variables-ecmascript.html
+- http://es6-features.org/
+- http://escuela.it/cursos/javascript-ecmascript-6/
+- http://es6-features.org/
+- https://developer.mozilla.org/en/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_6_support_in_Mozilla
+- https://babeljs.io/docs/learn-es2015/
