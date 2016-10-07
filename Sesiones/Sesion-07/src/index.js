@@ -1,9 +1,14 @@
 import React from 'react'
-import {Counter} from './components'
+import {Counter, InputList} from './components'
 
 const ReduxExample = ({props}) => (
   <div className='container'>
-    <Counter />
+    <div className='row'>
+      <Counter />
+    </div>
+    <div className='row'>
+      <InputList counter={1} />
+    </div>
   </div>
 )
 
