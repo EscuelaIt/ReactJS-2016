@@ -1,7 +1,10 @@
 import React from 'react'
+import {Counter} from './components'
 
 const ReduxExample = ({props}) => (
-  <div>Your module is working!</div>
+  <div className='container'>
+    <Counter />
+  </div>
 )
 
 export default ReduxExample
