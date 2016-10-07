@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 export default class Counter extends Component {
   constructor (...args) {
@@ -13,6 +13,7 @@ export default class Counter extends Component {
     this.setState({
       counter: this.state.counter + 1
     })
+    this.props.onAdd(this.state.counter)
   }
 
   render () {
@@ -25,4 +26,8 @@ export default class Counter extends Component {
       </div>
     )
   }
+}
+
+Counter.propTypes = {
+  onAdd: PropTypes.func
 }
