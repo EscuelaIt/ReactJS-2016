@@ -3,7 +3,7 @@ import { Header, CardList, SearchFilters } from '../components'
 import { connect } from 'react-redux'
 import { filterTeachers } from '../actions/filterTeachers'
 
-class App extends Component {
+class Searcher extends Component {
   componentDidMount () {
     if (this.props.filter) {
       this.props.onFilter({
@@ -23,7 +23,7 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
+Searcher.propTypes = {
   filter: PropTypes.string,
   onFilter: PropTypes.func,
   teachers: PropTypes.arrayOf(PropTypes.shape({
@@ -49,4 +49,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(Searcher)
