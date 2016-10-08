@@ -10,12 +10,18 @@ const SearchFilters = ({ onFilter }) => {
     })
   }
 
+  const handleChange = (evt) => {
+    onFilter({
+      text: input.value
+    })
+  }
+
   return (
     <div className='container'>
       <div className='row'>
         <form className='col s12' onSubmit={handleSubmit}>
           <div className='input-field col s6'>
-            <input id='teacher_name' ref={(node) => input = node} type='text' className='validate' />
+            <input onChange={handleChange} id='teacher_name' ref={(node) => input = node} type='text' className='validate' />
             <label htmlFor='teacher_name'>Nombre del profesor</label>
           </div>
           <div className='input-field col s6'>
