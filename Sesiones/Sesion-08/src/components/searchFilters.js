@@ -20,13 +20,13 @@ const SearchFilters = ({ onFilter }) => {
     <div className='container'>
       <div className='row'>
         <form className='col s12' onSubmit={handleSubmit}>
-          <div className='input-field col s6'>
+          <div className='input-field col s8'>
             <input onChange={handleChange} id='teacher_name' ref={(node) => input = node} type='text' className='validate' />
             <label htmlFor='teacher_name'>Nombre del profesor</label>
           </div>
-          <div className='input-field col s6'>
+          <div className='input-field col s4'>
             <button className='btn waves-effect waves-light' type='submit' name='action'>Buscar
-              <i className='material-icons right'>send</i>
+              <i className='material-icons right'>search</i>
             </button>
           </div>
         </form>
