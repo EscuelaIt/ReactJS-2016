@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Header, CardList, SearchFilters } from '../components'
 import { connect } from 'react-redux'
-import { filterTeachers } from '../actions/filterTeachers'
+import { filterTeachers } from '../actions/searcher'
 
 class Searcher extends Component {
   componentDidMount () {
@@ -36,7 +36,7 @@ Searcher.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   return {
     ...ownProps.params,
-    ...state
+    ...state.searcher
   }
 }
 

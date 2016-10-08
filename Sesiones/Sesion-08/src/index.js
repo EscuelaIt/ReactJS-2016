@@ -3,9 +3,9 @@ import { Searcher, Teacher } from './containers'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { Router, Route, browserHistory } from 'react-router'
-import searcher from './reducers/searcher'
+import root from './reducers/root'
 
-let store = createStore(searcher)
+let store = createStore(root)
 
 const SampleSpa = () => (
   <Provider store={store}>
