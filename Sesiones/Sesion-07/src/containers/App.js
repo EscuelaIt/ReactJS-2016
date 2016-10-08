@@ -1,35 +1,34 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 import { Counter, InputList } from '../components'
 import { connect } from 'react-redux'
+import { increment } from '../actions/counter'
 
-class ReduxExample extends Component {
-  constructor (...args) {
-    super(...args)
-    this.handleAdd = this.handleAdd.bind(this)
-  }
-
-  handleAdd () {
-    // TODO
-  }
-
-  render () {
-    return (
-      <div className='container'>
-        <div className='row'>
-          <Counter {...this.props} onAdd={this.handleAdd} />
-        </div>
-        <div className='row'>
-          <InputList {...this.props} />
-        </div>
-      </div>
-    )
-  }
-}
+const ReduxExample = ({counter, onAdd}) => (
+  <div className='container'>
+    <div className='row'>
+      <Counter counter={counter} onAdd={onAdd} />
+    </div>
+    <div className='row'>
+      <InputList counter={counter} />
+    </div>
+  </div>
+)
 
 ReduxExample.propTypes = {
-  counter: PropTypes.number
+  counter: PropTypes.number,
+  onAdd: PropTypes.func
 }
 
 const mapStateToProps = (state) => state
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAdd: () => {
+      dispatch(increment())
+    }
+  }
+}
 
-export default connect(mapStateToProps)(ReduxExample)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ReduxExample)
