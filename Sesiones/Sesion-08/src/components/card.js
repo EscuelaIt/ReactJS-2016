@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
-const Card = () => (
+const Card = ({name, description, id}) => (
   <div className='col s12 m7'>
     <div className='card horizontal'>
       <div className='card-image'>
@@ -8,14 +8,21 @@ const Card = () => (
       </div>
       <div className='card-stacked'>
         <div className='card-content'>
-          <p>I am a very simple card. I am good at containing small bits of information.</p>
+          <h5>{name}</h5>
+          <p>{description}</p>
         </div>
         <div className='card-action'>
-          <a href='#'>This is a link</a>
+          <a href={`/teacher/${id}`}>Ir a la página del profesor</a>
         </div>
       </div>
     </div>
   </div>
 )
+
+Card.propTypes = {
+  name: PropTypes.string,
+  description: PropTypes.string,
+  id: PropTypes.number
+}
 
 export default Card

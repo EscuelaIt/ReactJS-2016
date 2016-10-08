@@ -1,14 +1,9 @@
 import React from 'react'
 import Card from './card'
 
-const CardList = () => (
+const CardList = ({teachers}) => (
   <div className='container'>
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
+    {teachers.map(teacher => <Card {...teacher} />)}
   </div>
 )
 
