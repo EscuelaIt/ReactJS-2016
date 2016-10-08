@@ -1,7 +1,8 @@
 import React from 'react'
+import App from './containers/App'
 
-const SampleSpa = ({props}) => (
-  <div>Your module is working!</div>
+const SampleSpa = () => (
+  <App />
 )
 
 export default SampleSpa
