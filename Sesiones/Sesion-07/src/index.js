@@ -1,33 +1,15 @@
-import React, {Component} from 'react'
-import {Counter, InputList} from './components'
+import React from 'react'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import App from './containers/App'
+import counterApp from './reducers/counterApp'
 
-class ReduxExample extends Component {
-  constructor (...args) {
-    super(...args)
-    this.state = {
-      counter: 0
-    }
-    this.handleAdd = this.handleAdd.bind(this)
-  }
+let store = createStore(counterApp)
 
-  handleAdd () {
-    this.setState({
-      counter: this.state.counter + 1
-    })
-  }
-
-  render () {
-    return (
-      <div className='container'>
-        <div className='row'>
-          <Counter {...this.state} onAdd={this.handleAdd} />
-        </div>
-        <div className='row'>
-          <InputList {...this.state} />
-        </div>
-      </div>
-    )
-  }
-}
+const ReduxExample = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+)
 
 export default ReduxExample
