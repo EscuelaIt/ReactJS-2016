@@ -9,19 +9,21 @@ class ReduxExample extends Component {
     }
     this.handleAdd = this.handleAdd.bind(this)
   }
+
   handleAdd () {
     this.setState({
       counter: this.state.counter + 1
     })
   }
+
   render () {
     return (
       <div className='container'>
         <div className='row'>
-          <Counter onAdd={this.handleAdd} />
+          <Counter {...this.state} onAdd={this.handleAdd} />
         </div>
         <div className='row'>
-          <InputList counter={this.state.counter} />
+          <InputList {...this.state} />
         </div>
       </div>
     )
