@@ -1,7 +1,11 @@
 import React from 'react'
+import { TeacherTitle, TeacherDescription } from '../components'
 
 const Teacher = () => (
-  <div>Welcome to the teachers page</div>
+  <div>
+    <TeacherTitle />
+    <TeacherDescription />
+  </div>
 )
 
 export default Teacher
