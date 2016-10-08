@@ -3,15 +3,16 @@ import { Header, CardList, SearchFilters } from '../components'
 import { connect } from 'react-redux'
 import { filterTeachers } from '../actions/filterTeachers'
 
-const App = ({ onFilter, teachers }) => (
+const App = ({ onFilter, teachers, filter }) => (
   <div className='container'>
     <Header />
-    <SearchFilters onFilter={onFilter} />
+    <SearchFilters filter={filter} onFilter={onFilter} />
     <CardList teachers={teachers} />
   </div>
 )
 
 App.propTypes = {
+  filter: PropTypes.string,
   onFilter: PropTypes.func,
   teachers: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
@@ -20,7 +21,12 @@ App.propTypes = {
   }))
 }
 
-const mapStateToProps = state => state
+const mapStateToProps = (state, ownProps) => {
+  return {
+    ...ownProps.params,
+    ...state
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {

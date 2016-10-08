@@ -36,7 +36,8 @@ export default {
     port: 3000,
     stats: { colors: true },
     inline: true,
-    publicPath: '/dist/'
+    publicPath: '/dist/',
+    historyApiFallback: true
   },
   plugins: [
     new HotModuleReplacementPlugin(),
