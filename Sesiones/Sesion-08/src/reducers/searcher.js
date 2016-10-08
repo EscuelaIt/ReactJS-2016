@@ -1,5 +1,19 @@
 import teachers from '../data'
+import * as types from '../actions/actionTypes'
 
-const searcher = (state = {teachers}, action) => state
+const applyFilter = (name, filter) => {
+  return name.toLowerCase().includes(filter.toLowerCase())
+}
+
+const searcher = (state = {teachers}, action) => {
+  switch (action.type) {
+    case types.FILTER:
+      return {
+        teachers: teachers.filter(t => applyFilter(t.name, action.payload.text))
+      }
+    default:
+      return state
+  }
+}
 
 export default searcher

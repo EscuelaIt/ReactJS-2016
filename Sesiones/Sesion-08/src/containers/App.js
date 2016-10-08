@@ -1,16 +1,18 @@
 import React, { PropTypes } from 'react'
 import { Header, CardList, SearchFilters } from '../components'
 import { connect } from 'react-redux'
+import { filterTeachers } from '../actions/filterTeachers'
 
-const App = ({teachers}) => (
+const App = ({ onFilter, teachers }) => (
   <div className='container'>
     <Header />
-    <SearchFilters />
+    <SearchFilters onFilter={onFilter} />
     <CardList teachers={teachers} />
   </div>
 )
 
 App.propTypes = {
+  onFilter: PropTypes.func,
   teachers: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     description: PropTypes.string,
@@ -20,4 +22,13 @@ App.propTypes = {
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFilter: (filter) => dispatch(filterTeachers(filter))
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
