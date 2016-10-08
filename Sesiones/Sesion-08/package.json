@@ -39,5 +39,9 @@
       "babel-preset-es2015",
       "babel-preset-react"
     ]
+  },
+  "dependencies": {
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0"
   }
 }

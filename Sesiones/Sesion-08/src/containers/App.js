@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Header, CardList, SearchFilters } from '../components'
-import teachers from '../data'
+import { connect } from 'react-redux'
 
-const App = () => (
+const App = ({teachers}) => (
   <div className='container'>
     <Header />
     <SearchFilters />
@@ -10,4 +10,14 @@ const App = () => (
   </div>
 )
 
-export default App
+App.propTypes = {
+  teachers: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    description: PropTypes.string,
+    id: PropTypes.number
+  }))
+}
+
+const mapStateToProps = state => state
+
+export default connect(mapStateToProps)(App)
