@@ -9,6 +9,7 @@ const searcher = (state = {teachers}, action) => {
   switch (action.type) {
     case types.FILTER:
       return {
+        filter: action.payload.text,
         teachers: teachers.filter(t => applyFilter(t.name, action.payload.text))
       }
     default:
