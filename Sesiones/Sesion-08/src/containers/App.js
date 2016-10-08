@@ -1,8 +1,11 @@
 import React from 'react'
-import { Header } from '../components'
+import { Header, CardList } from '../components'
 
 const App = () => (
-  <Header />
+  <div className='container'>
+    <Header />
+    <CardList />
+  </div>
 )
 
 export default App
