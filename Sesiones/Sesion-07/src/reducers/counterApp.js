@@ -1,4 +1,5 @@
 import * as types from '../actions/actionTypes'
+
 const initialState = {
   counter: 0
 }
