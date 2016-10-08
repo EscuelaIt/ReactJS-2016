@@ -29,7 +29,7 @@ Searcher.propTypes = {
   teachers: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     description: PropTypes.string,
-    id: PropTypes.number
+    id: PropTypes.string
   }))
 }
 

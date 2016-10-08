@@ -26,7 +26,8 @@ Teacher.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   return {
     ...ownProps.params,
-    ...state.teacher
+    ...state.teacher,
+    id: ownProps.params.id
   }
 }
 
