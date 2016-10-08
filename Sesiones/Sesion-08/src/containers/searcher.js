@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { Header, CardList, SearchFilters } from '../components'
+import { CardList, SearchFilters } from '../components'
 import { connect } from 'react-redux'
 import { filterTeachers } from '../actions/searcher'
 
@@ -14,10 +14,11 @@ class Searcher extends Component {
 
   render () {
     return (
-      <div className='container'>
-        <Header />
+      <div>
         <SearchFilters filter={this.props.filter} onFilter={this.props.onFilter} />
-        <CardList teachers={this.props.teachers} />
+        <div className='container'>
+          <CardList teachers={this.props.teachers} />
+        </div>
       </div>
     )
   }

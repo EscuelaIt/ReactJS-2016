@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
 
 class SearchFilters extends Component {
   constructor (...args) {
@@ -22,21 +23,23 @@ class SearchFilters extends Component {
 
   render () {
     return (
-      <div className='container'>
-        <div className='row'>
-          <form className='col s12' onSubmit={this.handleSubmit}>
-            <div className='input-field col s8'>
-              <input onChange={this.handleChange} id='teacher_name' ref={(node) => this.input = node} type='text' className='validate' value={this.props.filter} />
-              <label htmlFor='teacher_name'>Nombre del profesor</label>
-            </div>
-            <div className='input-field col s4'>
-              <button className='btn waves-effect waves-light' type='submit' name='action'>Buscar
-                <i className='material-icons right'>search</i>
-              </button>
-            </div>
-          </form>
+      <nav className='orange'>
+        <div className='nav-wrapper'>
+          <div className='col s12'>
+            {
+              this.props.onFilter
+              ? <form onSubmit={this.handleSubmit}>
+                  <div className='input-field'>
+                    <input onChange={this.handleChange} ref={(node) => this.input = node} id='search' type='search' value={this.props.filter} required />
+                    <label htmlFor='search'><i className='material-icons'>search</i></label>
+                    <i className='material-icons'>close</i>
+                  </div>
+                </form>
+              : <Link to='/' className='brand-logo'>Curso de React.JS</Link>
+            }
+          </div>
         </div>
-      </div>
+      </nav>
     )
   }
 }

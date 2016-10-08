@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { TeacherTitle, TeacherDescription } from '../components'
+import { SearchFilters, TeacherTitle, TeacherDescription } from '../components'
 import { connect } from 'react-redux'
 import { requestTeacher } from '../actions/teacher'
 
@@ -11,6 +11,7 @@ class Teacher extends Component {
   render () {
     return (
       <div>
+        <SearchFilters />
         <TeacherTitle {...this.props} />
         <TeacherDescription {...this.props} />
       </div>

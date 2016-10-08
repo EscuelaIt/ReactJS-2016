@@ -1,7 +1,7 @@
 import React from 'react'
 
 const TeacherTitle = ({ name }) => (
-  <div className='section red lighten-2'>
+  <div className='section orange'>
     <div className='container'>
       <div className='row'>
         <div className='col s12 m9'>
