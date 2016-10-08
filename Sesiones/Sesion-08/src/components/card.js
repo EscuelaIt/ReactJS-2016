@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 
-const Card = ({name, description, id}) => (
+const Card = ({ avatar, name, description, id }) => (
   <div className='col s12 m7'>
     <div className='card horizontal'>
       <div className='card-image'>
-        <img src='http://lorempixel.com/100/190/nature/6' />
+        <img src={avatar} />
       </div>
       <div className='card-stacked'>
         <div className='card-content'>
@@ -20,6 +20,7 @@ const Card = ({name, description, id}) => (
 )
 
 Card.propTypes = {
+  avatar: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
   id: PropTypes.number
