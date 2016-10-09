@@ -1,19 +1,16 @@
 import React from 'react'
-import { Searcher, Teacher } from './containers'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { Router, Route, browserHistory } from 'react-router'
-import root from './reducers/root'
+import { Router, browserHistory } from 'react-router'
+import routes from './routes'
 
-let store = createStore(root)
-
-const SampleSpa = () => (
-  <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path='/(:filter)' component={Searcher} />
-      <Route path='/teacher/(:id)' component={Teacher} />
-    </Router>
-  </Provider>
-)
+const SampleSpa = ({store}) => {
+  return (
+    <Provider store={store}>
+      <Router
+        history={browserHistory}
+        routes={routes} />
+    </Provider>
+  )
+}
 
 export default SampleSpa

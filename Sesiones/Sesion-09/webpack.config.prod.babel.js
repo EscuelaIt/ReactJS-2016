@@ -1,10 +1,10 @@
-
+import {join} from 'path'
 import {optimize, DefinePlugin} from 'webpack'
 import {resolve} from 'path'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 export default {
-  entry: resolve(__dirname, 'src'),
+  entry: resolve(__dirname, 'client'),
   module: {
     loaders: [{
       test: /\.js$/,
@@ -40,6 +40,9 @@ export default {
     })
   ],
   resolve: {
+    alias: {
+      '@typeform/sample-spa': join(__dirname, 'src')
+    },
     extensions: ['', '.js']
   }
 }

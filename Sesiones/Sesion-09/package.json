@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "main": "lib",
   "scripts": {
+    "dist": "NODE_ENV=production webpack --config webpack.config.prod.babel.js",
+    "serve": "nodemon --exec babel-node -- server/index.js",
     "start": "webpack-dev-server --config webpack.config.dev.babel.js"
   },
   "repository": {
@@ -20,8 +22,11 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-2": "^6.17.0",
     "css-loader": "^0.24.0",
+    "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.22.0",
     "node-sass": "^3.8.0",
+    "nodemon": "^1.11.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "sass-loader": "^4.0.0",
