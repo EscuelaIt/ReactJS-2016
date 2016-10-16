@@ -39,10 +39,11 @@ export const fetchTeachers = () => {
 }
 
 export const filterTeachers = (filter) => {
-  return {
-    type: types.FILTER,
-    payload: {
-      ...filter
-    }
+  return dispatch => {
+    dispatch(fetchTeachersRequest())
+
+    repository.filter(filter)
+      .then(teachers => dispatch(fetchTeachersSuccess(teachers)))
+      .catch(err => dispatch(fetchTeachersFailure(err)))
   }
 }
