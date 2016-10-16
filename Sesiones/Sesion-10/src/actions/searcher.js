@@ -32,7 +32,7 @@ export const fetchTeachers = () => {
   return dispatch => {
     dispatch(fetchTeachersRequest())
 
-    repository.fetch()
+    return repository.fetch()
       .then(teachers => dispatch(fetchTeachersSuccess(teachers)))
       .catch(err => dispatch(fetchTeachersFailure(err)))
   }
@@ -42,7 +42,7 @@ export const filterTeachers = (filter) => {
   return dispatch => {
     dispatch(fetchTeachersRequest())
 
-    repository.filter(filter)
+    return repository.filter(filter)
       .then(teachers => dispatch(fetchTeachersSuccess(teachers)))
       .catch(err => dispatch(fetchTeachersFailure(err)))
   }

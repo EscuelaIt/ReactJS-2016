@@ -1,6 +1,14 @@
 import { expect } from 'chai'
 import searcherReducer from '../../src/reducers/searcher'
-import { filterTeachers } from '../../src/actions/searcher'
+import { fetchTeachers } from '../../src/actions/searcher'
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
+import * as types from '../../src/actions/actionTypes'
+import TeacherRepository from '../../src/repositories/teacher'
+import sinon from 'sinon'
+
+const middlewares = [thunk]
+const mockStore = configureMockStore(middlewares)
 
 describe('#searcher reducer', () => {
   it('returns the default state when there is no action to hanle', () => {
@@ -9,17 +17,21 @@ describe('#searcher reducer', () => {
     expect(searcherReducer(teachers, action)).to.be.eql(teachers)
   })
 
-  it('returns the filtered state only with the teachers who matches the filter', () => {
-    const teachers = [{
-      name: 'daniel'
-    }, {
-      name: 'miguel'
-    }]
+  it('creates FETCH_TEACHERS_SUCCESS when fetching teachers has been done', () => {
+    const expectedTeachers = [{ some: 'teacher' }]
 
-    const action = filterTeachers({ text: 'dani' })
+    sinon.stub(TeacherRepository.prototype, 'fetch', () => Promise.resolve(expectedTeachers))
 
-    const newState = searcherReducer(teachers, action)
+    const expectedActions = [
+      { type: types.FETCH_TEACHERS_REQUEST },
+      { type: types.FETCH_TEACHERS_SUCCESS, payload: { teachers: expectedTeachers } }
+    ]
 
-    expect(newState.teachers.reduce(t => t)).to.have.property('name', 'Daniel de la Cruz')
+    const store = mockStore({ teachers: [] })
+
+    return store.dispatch(fetchTeachers())
+      .then(() => {
+        expect(store.getActions()).to.be.eql(expectedActions)
+      })
   })
 })
