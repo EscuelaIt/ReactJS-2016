@@ -1,23 +1,16 @@
+import React from 'react'
+import { shallow } from 'enzyme'
 import { expect } from 'chai'
-import { createElement } from 'react'
-import { createRenderer, renderIntoDocument, Simulate } from 'react-addons-test-utils'
+
 import Card from '../../src/components/card'
 
 describe('<Card />', () => {
   it('is rendered properly', () => {
-    const shallowRenderer = createRenderer()
-    const card = createElement(Card)
-    shallowRenderer.render(card)
-    const result = shallowRenderer.getRenderOutput()
-    expect(result.type).to.be.eql('div')
+    const wrapper = shallow(<Card />)
+    expect(wrapper.node.type).to.be.eql('div')
   })
 
-  // it('link', () => {
-  //   const shallowRenderer = createRenderer()
-  //   const card = createElement(Card)
-  //   shallowRenderer.render(card)
-  //   const result = shallowRenderer.getRenderOutput()
-  //   const node = renderIntoDocument(result)
-  //   Simulate.click(node)
-  // })
+  xit('link', () => {
+    // TODO
+  })
 })
