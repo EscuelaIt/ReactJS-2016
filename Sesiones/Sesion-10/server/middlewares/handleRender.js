@@ -6,6 +6,9 @@ import renderFullPage from '../views/renderFullPage'
 import { match, RouterContext } from 'react-router'
 import routes from '../../src/routes'
 import { Provider } from 'react-redux'
+import TeacherRepository from '../../src/repositories/teacher'
+
+const repository = new TeacherRepository()
 
 function handleRender (req, res) {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
@@ -14,17 +17,24 @@ function handleRender (req, res) {
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
-      let store = createStore(root)
+      repository.fetch()
+        .then(teachers => {
+          let store = createStore(root, {
+            searcher: {
+              teachers
+            }
+          })
 
-      const html = renderToString(
-        <Provider store={store}>
-          <RouterContext {...renderProps}/>
-        </Provider>
-      )
+          const html = renderToString(
+            <Provider store={store}>
+              <RouterContext {...renderProps}/>
+            </Provider>
+          )
 
-      const preloadedState = store.getState()
+          const preloadedState = store.getState()
 
-      res.status(200).send(renderFullPage(html, preloadedState))
+          res.status(200).send(renderFullPage(html, preloadedState))
+        })
     } else {
       res.status(404).send('Not found')
     }

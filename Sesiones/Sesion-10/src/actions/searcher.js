@@ -1,13 +1,7 @@
 import * as types from './actionTypes'
-import teachers from '../data'
+import TeacherRepository from '../repositories/teacher'
 
-const fetch = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(teachers)
-    }, 1000)
-  })
-}
+const repository = new TeacherRepository()
 
 const fetchTeachersRequest = () => {
   return {
@@ -38,7 +32,7 @@ export const fetchTeachers = () => {
   return dispatch => {
     dispatch(fetchTeachersRequest())
 
-    fetch()
+    repository.fetch()
       .then(teachers => dispatch(fetchTeachersSuccess(teachers)))
       .catch(err => dispatch(fetchTeachersFailure(err)))
   }
