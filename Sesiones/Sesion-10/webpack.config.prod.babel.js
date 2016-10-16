@@ -1,0 +1,48 @@
+import {join} from 'path'
+import {optimize, DefinePlugin} from 'webpack'
+import {resolve} from 'path'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+
+export default {
+  entry: resolve(__dirname, 'client'),
+  module: {
+    loaders: [{
+      test: /\.js$/,
+      loaders: ['babel-loader'],
+      exclude: /node_modules/
+    }, {
+      test: /\.scss$/,
+      loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
+      exclude: /node_modules/
+    }]
+  },
+  exterals: {
+    'react': 'react',
+    'react-dom': 'react-dom'
+  },
+  output: {
+    path: resolve(__dirname, 'dist'),
+    filename: 'sample-spa.min.js',
+    library: 'sample-spa',
+    libraryTarget: 'umd'
+  },
+  plugins: [
+    new ExtractTextPlugin('sample-spa.min.css'),
+    new optimize.OccurenceOrderPlugin(),
+    new DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
+    new optimize.UglifyJsPlugin({
+      compressor: {
+        screw_ie8: true,
+        warnings: false
+      }
+    })
+  ],
+  resolve: {
+    alias: {
+      '@typeform/sample-spa': join(__dirname, 'src')
+    },
+    extensions: ['', '.js']
+  }
+}
