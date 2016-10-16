@@ -35,7 +35,7 @@ class SearchFilters extends Component {
                     <i className='material-icons'>close</i>
                   </div>
                 </form>
-              : <a href='/' className='brand-logo'>Curso de React.JS</a>
+              : <Link to='/' className='brand-logo'>Curso de React.JS</Link>
             }
           </div>
         </div>
