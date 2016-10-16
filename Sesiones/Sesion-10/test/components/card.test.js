@@ -9,8 +9,4 @@ describe('<Card />', () => {
     const wrapper = shallow(<Card />)
     expect(wrapper.node.type).to.be.eql('div')
   })
-
-  xit('link', () => {
-    // TODO
-  })
 })
