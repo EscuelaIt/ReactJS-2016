@@ -44,6 +44,7 @@
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.1",
     "sass-loader": "^4.0.0",
+    "sinon": "^1.17.6",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.0"
